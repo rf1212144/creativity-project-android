@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/change_user_info_userName_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="104dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="76dp"
+        android:focusable="false"
+        android:hint="@string/prompt_user_name"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/change_user_userGender_radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintStart_toStartOf="@+id/change_user_info_userName_editText"
+        app:layout_constraintTop_toBottomOf="@+id/change_user_info_userName_editText">
+
+        <RadioButton
+            android:id="@+id/change_user_male_radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prompt_male" />
+
+        <RadioButton
+            android:id="@+id/change_user_female_radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prompt_female" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/change_user_targetProfession_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="77dp"
+        android:hint="@string/prompt_targetProfession"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/change_user_userGender_radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/change_user_userGender_radioGroup" />
+
+    <EditText
+        android:id="@+id/change_user_targetSchool_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_targetSchool"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="337dp" />
+
+    <Button
+        android:id="@+id/change_user_info_confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_confirm"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="391dp" />
+</android.support.constraint.ConstraintLayout>
