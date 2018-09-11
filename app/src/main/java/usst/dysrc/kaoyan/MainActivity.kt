@@ -1,5 +1,6 @@
 package usst.dysrc.kaoyan
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -22,6 +23,14 @@ class MainActivity : AppCompatActivity(),RadioGroup.OnCheckedChangeListener {
             post_management_radioButton.id ->{
                 changeFragment(PostManagementFragment(),true)
             }
+            create_new_post_RadioButton.id ->{
+                val applicationData=application as ApplicationData
+                if (applicationData.userId==(-1).toLong()){
+                    startActivity(Intent().setClass(this,LoginActivity::class.java))
+                }else {
+                    startActivity(Intent().setClass(this, CreateNewPost::class.java))
+                }
+            }
             else -> {
             }
         }
@@ -40,5 +49,9 @@ class MainActivity : AppCompatActivity(),RadioGroup.OnCheckedChangeListener {
         fragmentTransaction.replace(main_content.id,fragment)
         if (!isFirst) fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+    }
+
+    override fun onBackPressed() {
+        //empty function to avoid back to some strange activity
     }
 }

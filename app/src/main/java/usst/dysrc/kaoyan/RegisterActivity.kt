@@ -17,7 +17,8 @@ class RegisterActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         registerButton.setOnClickListener{ _ ->
-            if (!register_confirm_password_editText.text.equals(register_password_editText.text)) {
+            if (!register_confirm_password_editText.text.toString()
+                            .equals(register_password_editText.text.toString(),false)) {
                 Toast.makeText(this, "确认密码错误", Toast.LENGTH_SHORT).show()
             } else {
                 val registerUser= User()

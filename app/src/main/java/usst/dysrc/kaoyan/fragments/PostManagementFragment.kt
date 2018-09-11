@@ -13,6 +13,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import usst.dysrc.kaoyan.ApplicationData
 import usst.dysrc.kaoyan.CreateNewPost
+import usst.dysrc.kaoyan.LoginActivity
 import usst.dysrc.kaoyan.R
 import usst.dysrc.kaoyan.adapters.PostListRecyclerViewAdapter
 import usst.dysrc.kaoyan.entities.Post
@@ -25,7 +26,11 @@ class PostManagementFragment: Fragment() {
         val view = inflater.inflate(R.layout.fragment_post_management, null)
         val applicationData= activity!!.application as ApplicationData
         view.create_new_post_imageView.setOnClickListener {
-            startActivity(Intent().setClass(activity,CreateNewPost::class.java))
+            if (applicationData.userId==(-1).toLong()){
+                startActivity(Intent().setClass(activity,LoginActivity::class.java))
+            }else{
+                startActivity(Intent().setClass(activity,CreateNewPost::class.java))
+            }
         }
         view.mine_postList_recyclerView.layoutManager=LinearLayoutManager(activity)
         doAsync {

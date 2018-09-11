@@ -92,6 +92,7 @@ class PostDetailActivity: AppCompatActivity(){
     //when the back key were pressed,turn to mainActivity
     override fun onBackPressed() {
         super.onBackPressed()
+        finish()
         startActivity(Intent().setClass(this,MainActivity::class.java))
     }
 }

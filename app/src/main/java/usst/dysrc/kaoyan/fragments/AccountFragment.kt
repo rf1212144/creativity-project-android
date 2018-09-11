@@ -34,6 +34,9 @@ class AccountFragment: Fragment() {
             view.change_user_info_button.setOnClickListener {
                 startActivity(Intent().setClass(activity,ChangeUserInfoActivity::class.java))
             }
+            view.clockIn_button.setOnClickListener {
+                startActivity(Intent().setClass(activity,ClockInActivity::class.java))
+            }
         }
         return view
     }

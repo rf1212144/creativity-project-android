@@ -20,4 +20,11 @@
         android:layout_marginLeft="100dp"
         android:layout_marginStart="100dp" />
 
+    <Button
+        android:id="@+id/clockIn_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_clockIn"
+        android:layout_marginTop="40dp"/>
+
 </FrameLayout>

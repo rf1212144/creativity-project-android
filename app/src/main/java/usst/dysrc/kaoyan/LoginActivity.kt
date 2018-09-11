@@ -27,15 +27,19 @@ class LoginActivity : AppCompatActivity() {
                         OKHTTPUtils.postData(
                                 ServerUtil.SERVER_HOST_URL + ServerUtil.SERVER_USER_LOGIN_URL,
                                 JSON.toJSONString(loginUser))
-                val loginMessage:String=loginResponse.body()!!.string()
+                val loginMessage:String=JSON.parseObject(loginResponse.body()!!.string(),String::class.java)
                 uiThread {
-                    if (!loginMessage.equals(ResultEnum.LOGIN_ERROR.message) ||
-                            !loginMessage.equals(ResultEnum.LOGIN_PSW_ERROR.message)) {
+                    if (!loginMessage.equals(ResultEnum.LOGIN_ERROR.message,false) &&
+                            !loginMessage.equals(ResultEnum.LOGIN_PSW_ERROR.message,false)) {
                         val applicationData:ApplicationData= application as ApplicationData
                         applicationData.userId=loginMessage.toLong()
+//                        startActivity(Intent().setClass(it,MainActivity::class.java))
+                        finish()
                         startActivity(Intent().setClass(it,MainActivity::class.java))
+                    }else{
+                        Toast.makeText(it,loginMessage,Toast.LENGTH_SHORT).show()
+
                     }
-                    Toast.makeText(it,loginMessage,Toast.LENGTH_SHORT).show()
                 }
             }
         }

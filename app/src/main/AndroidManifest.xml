@@ -36,6 +36,8 @@
             android:label="@string/title_activity_postDetail"/>
         <activity android:name=".CreateNewPost"
             android:label="@string/title_activity_create_new_post"/>
+        <activity android:name=".ClockInActivity"
+            android:label="@string/title_activity_clock_in"/>
 
     </application>
 

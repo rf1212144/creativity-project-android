@@ -18,8 +18,10 @@ class CreateNewPost: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
+        val applicationData=application as ApplicationData
         confirm_create_new_post_button.setOnClickListener { _ ->
             val newPost=Post()
+            newPost.userId=applicationData.userId
             newPost.title=newPost_title_editView.text.toString()
             newPost.content=newPost_content_editView.text.toString()
             doAsync {
@@ -27,10 +29,10 @@ class CreateNewPost: AppCompatActivity() {
                         ServerUtil.SERVER_HOST_URL+ServerUtil.SERVER_POST_CREATE_POST_URL,
                         JSON.toJSONString(newPost))
                 uiThread {
-                    if (response.body()!!.string().equals(ResultEnum.CREATE_POST_FAILED.message))
+                    if (response.body()!!.string().equals(ResultEnum.CREATE_POST_FAILED.message,false))
                         Toast.makeText(it,ResultEnum.CREATE_POST_FAILED.message,Toast.LENGTH_SHORT).show()
                     else{
-                        Toast.makeText(it,ResultEnum.CREATE_POST_SUCCESS.message,Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(it,ResultEnum.CREATE_POST_SUCCESS.message,Toast.LENGTH_SHORT).show()
                         startActivity(
                                 Intent().putExtra("postId",JSON.parseObject(response.body()!!.string(),Long::class.java))
                                         .setClass(it,PostDetailActivity::class.java))

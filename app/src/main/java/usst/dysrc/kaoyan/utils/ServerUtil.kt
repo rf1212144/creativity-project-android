@@ -1,7 +1,7 @@
 package usst.dysrc.kaoyan.utils
 
 object ServerUtil{
-    const val SERVER_HOST_URL:String="127.0.0.1:8096"
+    const val SERVER_HOST_URL:String="http://192.168.1.109:8096/kaoyan"
     const val SERVER_USER_LOGIN_URL:String="/user/login"
     const val SERVER_USER_REGISTER_URL:String="/user/register"
     const val SERVER_USER_CHANGE_USER_INFO_URL:String="/user/changeUserInfo"
