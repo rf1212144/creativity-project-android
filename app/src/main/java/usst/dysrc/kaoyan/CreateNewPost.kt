@@ -28,13 +28,15 @@ class CreateNewPost: AppCompatActivity() {
                 val response=OKHTTPUtils.postData(
                         ServerUtil.SERVER_HOST_URL+ServerUtil.SERVER_POST_CREATE_POST_URL,
                         JSON.toJSONString(newPost))
+                //response.body()!!.string() cannot be used twice
+                val responseString=response.body()!!.string()
                 uiThread {
-                    if (response.body()!!.string().equals(ResultEnum.CREATE_POST_FAILED.message,false))
+                    if (responseString.equals(ResultEnum.CREATE_POST_FAILED.message,false))
                         Toast.makeText(it,ResultEnum.CREATE_POST_FAILED.message,Toast.LENGTH_SHORT).show()
                     else{
 //                        Toast.makeText(it,ResultEnum.CREATE_POST_SUCCESS.message,Toast.LENGTH_SHORT).show()
                         startActivity(
-                                Intent().putExtra("postId",JSON.parseObject(response.body()!!.string(),Long::class.java))
+                                Intent().putExtra("postId",JSON.parseObject(responseString,Long::class.java))
                                         .setClass(it,PostDetailActivity::class.java))
                     }
                 }

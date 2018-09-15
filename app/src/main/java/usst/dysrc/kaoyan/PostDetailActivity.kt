@@ -19,15 +19,13 @@ import java.util.*
 
 class PostDetailActivity: AppCompatActivity(){
 
-    private val applicationData=application as ApplicationData
-    private val postId=this.intent.getLongExtra("postId",-1)
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_detail)
+        val applicationData:ApplicationData=application as ApplicationData
+        val postId=this.intent.getLongExtra("postId",-1)
         if (postId!=(-1).toLong()){
-            refreshPostDetail()
+            refreshPostDetail(postId)
             create_new_comment_action_button.setOnClickListener {
                 if (create_new_comment_editText.text==null||create_new_comment_editText.text.equals("")){
                     Toast.makeText(this,"不能为空",Toast.LENGTH_SHORT).show()
@@ -45,7 +43,7 @@ class PostDetailActivity: AppCompatActivity(){
                             Toast.makeText(it,response.body()!!.string(),Toast.LENGTH_SHORT).show()
                         }
                     }
-                    refreshPostDetail()
+                    refreshPostDetail(postId)
                 }
             }
             admire_button.setOnClickListener{ _ ->
@@ -75,19 +73,21 @@ class PostDetailActivity: AppCompatActivity(){
     }
 
     //function to refresh the data that responses from server
-    private fun refreshPostDetail()=doAsync {
-        val response=OKHTTPUtils.getData(ServerUtil.SERVER_HOST_URL+ServerUtil.SERVER_POST_SEARCH_POST_DETAIL+"/"+postId)
-        val postDetail:PostDetail= JSON.parseObject(response.body()!!.string(),PostDetail::class.java)
-        uiThread {
-            detailPost_userName_textView.text=postDetail.post!!.userName
-            detailPost_title_textView.text=postDetail.post!!.title
-            detailPost_createDate_textView.text=postDetail.post!!.createDate.toString()
-            detailPost_content_textView.text=postDetail.post!!.content
-            detailPost_admireNum_textView.text= postDetail.post!!.admireNum.toString()
-            detailPost_commentList_recyclerView.layoutManager=LinearLayoutManager(it)
-            detailPost_commentList_recyclerView.adapter=CommentListRecyclerViewAdapter(it, postDetail.commentList!!)
+    private fun refreshPostDetail(postId:Long)=
+        doAsync {
+            val response=OKHTTPUtils.getData(ServerUtil.SERVER_HOST_URL+ServerUtil.SERVER_POST_SEARCH_POST_DETAIL+"/"+postId)
+            val postDetail:PostDetail= JSON.parseObject(response.body()!!.string(),PostDetail::class.java)
+            uiThread {
+                detailPost_userName_textView.text=postDetail.post!!.userName
+                detailPost_title_textView.text=postDetail.post!!.title
+                detailPost_createDate_textView.text=postDetail.post!!.createDate.toString()
+                detailPost_content_textView.text=postDetail.post!!.content
+                detailPost_admireNum_textView.text= postDetail.post!!.admireNum.toString()
+                detailPost_commentList_recyclerView.layoutManager=LinearLayoutManager(it)
+                detailPost_commentList_recyclerView.adapter=CommentListRecyclerViewAdapter(it, postDetail.commentList!!)
+            }
         }
-    }
+
 
     //when the back key were pressed,turn to mainActivity
     override fun onBackPressed() {
