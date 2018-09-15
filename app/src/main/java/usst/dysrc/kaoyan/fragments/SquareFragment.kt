@@ -34,6 +34,7 @@ class SquareFragment : Fragment() {
                 val postList: List<Post> = JSON.parseArray(response.body()!!.string(), Post::class.java)
                 uiThread {
                     view.postList_recyclerView!!.adapter=PostListRecyclerViewAdapter(it.context!!,postList)
+                    view.postList_swipeRefreshLayout.isRefreshing=false
                 }
             }
         }
