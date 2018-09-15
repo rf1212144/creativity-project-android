@@ -5,6 +5,7 @@
     <string name="title_activity_postDetail">订单详情</string>
     <string name="title_activity_create_new_post">新建帖子</string>
     <string name="title_activity_clock_in">打卡</string>
+    <string name="title_activity_mine_collectionList">收藏列表</string>
 
     <string name="text_login_hint">请先登陆</string>
     <string name="prompt_email">Email</string>
@@ -35,6 +36,7 @@
     <string name="button_admire">点赞</string>
     <string name="button_collect">收藏</string>
     <string name="button_confirm_create_new_post">发帖</string>
+    <string name="button_mine_collections">我的收藏</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

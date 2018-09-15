@@ -37,6 +37,9 @@ class AccountFragment: Fragment() {
             view.clockIn_button.setOnClickListener {
                 startActivity(Intent().setClass(activity,ClockInActivity::class.java))
             }
+            view.mine_collections_button.setOnClickListener {
+                startActivity(Intent().setClass(activity,MineCollectionListActivity::class.java))
+            }
         }
         return view
     }
