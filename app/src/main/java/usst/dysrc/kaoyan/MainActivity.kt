@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(),RadioGroup.OnCheckedChangeListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         main_radioGroup.setOnCheckedChangeListener(this)
-        mine_radioButton.isChecked=true
+        square_radioButton.isChecked=true
         changeFragment(AccountFragment(),false)
     }
 
