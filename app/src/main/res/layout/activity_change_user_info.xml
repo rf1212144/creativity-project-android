@@ -9,9 +9,9 @@
         android:id="@+id/change_user_info_userName_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="104dp"
         android:layout_marginStart="104dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="77dp"
         android:focusable="false"
         android:hint="@string/prompt_user_name"
         android:inputType="textEmailAddress"
@@ -22,7 +22,7 @@
         android:id="@+id/change_user_userGender_radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="36dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintStart_toStartOf="@+id/change_user_info_userName_editText"
@@ -45,7 +45,7 @@
         android:id="@+id/change_user_targetProfession_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="77dp"
+        android:layout_marginTop="40dp"
         android:hint="@string/prompt_targetProfession"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="@+id/change_user_userGender_radioGroup"
@@ -58,13 +58,13 @@
         android:hint="@string/prompt_targetSchool"
         android:inputType="text"
         tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="337dp" />
+        tools:layout_editor_absoluteY="311dp" />
 
     <Button
         android:id="@+id/change_user_info_confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_confirm"
-        tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="391dp" />
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="393dp" />
 </android.support.constraint.ConstraintLayout>
