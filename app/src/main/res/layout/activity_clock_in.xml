@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="新建打卡"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="170dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="删除打卡"
+        tools:layout_editor_absoluteX="254dp"
+        tools:layout_editor_absoluteY="170dp" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="413dp"
+        android:layout_height="306dp"
+        tools:layout_editor_absoluteX="-29dp"
+        tools:layout_editor_absoluteY="242dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="170dp"
+        android:layout_height="145dp"
+        android:hint="输入打卡事务"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="52dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="149dp" />
 
 </android.support.constraint.ConstraintLayout>

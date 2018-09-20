@@ -24,16 +24,16 @@
         android:id="@+id/clockIn_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_clockIn"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp"
+        android:text="@string/button_clockIn" />
 
     <Button
         android:id="@+id/mine_collections_button"
-        android:layout_width="wrap_content"
+        android:layout_width="108dp"
         android:layout_height="wrap_content"
-        android:text="@string/button_mine_collections"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp" />
+        android:layout_marginTop="40dp"
+        android:text="@string/button_mine_collections" />
 
 </FrameLayout>
