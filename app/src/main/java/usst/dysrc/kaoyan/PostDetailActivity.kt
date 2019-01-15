@@ -37,7 +37,7 @@ class PostDetailActivity: AppCompatActivity(){
                         newComment.content=create_new_comment_editText.text.toString()
                         newComment.createDate=Date()
                         val response=OKHTTPUtils.postData(
-                                ServerUtil.SERVER_HOST_URL+ServerUtil.SERVER_PSOT_INCREASE_COMMENT_URL,
+                                ServerUtil.SERVER_HOST_URL+ServerUtil.SERVER_POST_INCREASE_COMMENT_URL,
                                 JSON.toJSONString(newComment))
                         uiThread {
                             Toast.makeText(it,response.body()!!.string(),Toast.LENGTH_SHORT).show()
@@ -62,7 +62,7 @@ class PostDetailActivity: AppCompatActivity(){
                     newCollection.postId=postId
                     newCollection.userId=applicationData.userId
                     val response=OKHTTPUtils.postData(
-                            ServerUtil.SERVER_HOST_URL+ServerUtil.SERVER_PSOT_COLLECT_POST_URL,
+                            ServerUtil.SERVER_HOST_URL+ServerUtil.SERVER_POST_COLLECT_POST_URL,
                             JSON.toJSONString(newCollection))
                     uiThread {
                         Toast.makeText(it, response.body()!!.string(),Toast.LENGTH_SHORT).show()
