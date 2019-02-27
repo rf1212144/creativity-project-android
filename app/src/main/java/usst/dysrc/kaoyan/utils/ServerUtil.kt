@@ -12,4 +12,5 @@ object ServerUtil{
     const val SERVER_POST_DELETE_POST_URL="/post/deletePost"
     const val SERVER_POST_INCREASE_COMMENT_URL="/post/increaseComment"
     const val SERVER_POST_COLLECT_POST_URL="/post/collectPost"
+    const val SERVER_POST_SEARCH_COLLECTIONS_URL="/post/searchCollectionList"
 }
