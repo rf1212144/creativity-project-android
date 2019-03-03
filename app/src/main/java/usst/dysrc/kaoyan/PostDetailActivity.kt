@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.widget.Toast
 import com.alibaba.fastjson.JSON
 import kotlinx.android.synthetic.main.activity_post_detail.*
@@ -25,7 +26,7 @@ class PostDetailActivity: AppCompatActivity(){
         val applicationData:ApplicationData=application as ApplicationData
         val postId=this.intent.getLongExtra("postId",-1)
         if (postId!=(-1).toLong()){
-            refreshPostDetail(postId)
+            refreshPostDetail(postId,applicationData.userId)
             create_new_comment_action_button.setOnClickListener {
                 if (create_new_comment_editText.text==null||create_new_comment_editText.text.equals("")){
                     Toast.makeText(this,"不能为空",Toast.LENGTH_SHORT).show()
@@ -43,7 +44,7 @@ class PostDetailActivity: AppCompatActivity(){
                             Toast.makeText(it,response.body()!!.string(),Toast.LENGTH_SHORT).show()
                         }
                     }
-                    refreshPostDetail(postId)
+                    refreshPostDetail(postId,applicationData.userId)
                 }
             }
             admire_button.setOnClickListener{ _ ->
@@ -69,11 +70,24 @@ class PostDetailActivity: AppCompatActivity(){
                     }
                 }
             }
+            delete_post_button.setOnClickListener{
+                doAsync {
+                    val response=OKHTTPUtils.postData(
+                            ServerUtil.SERVER_HOST_URL+ServerUtil.SERVER_POST_DELETE_POST_URL,
+                            JSON.toJSONString(postId))
+                    //todo
+                    uiThread {
+                        Toast.makeText(it, response.body()!!.string(),Toast.LENGTH_SHORT).show()
+                        finish()
+                        startActivity(Intent().setClass(it,MainActivity::class.java))
+                    }
+                }
+            }
         }
     }
 
     //function to refresh the data that responses from server
-    private fun refreshPostDetail(postId:Long)=
+    private fun refreshPostDetail(postId:Long,applicationUserId:Long)=
         doAsync {
             val response=OKHTTPUtils.getData(ServerUtil.SERVER_HOST_URL+ServerUtil.SERVER_POST_SEARCH_POST_DETAIL+"/"+postId)
             val postDetail:PostDetail= JSON.parseObject(response.body()!!.string(),PostDetail::class.java)
@@ -85,6 +99,9 @@ class PostDetailActivity: AppCompatActivity(){
                 detailPost_admireNum_textView.text= postDetail.post!!.admireNum.toString()
                 detailPost_commentList_recyclerView.layoutManager=LinearLayoutManager(it)
                 detailPost_commentList_recyclerView.adapter=CommentListRecyclerViewAdapter(it, postDetail.commentList!!)
+                if (applicationUserId== postDetail.post!!.userId){
+                    delete_post_button.visibility= View.VISIBLE
+                }
             }
         }
 
