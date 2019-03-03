@@ -16,6 +16,7 @@ import usst.dysrc.kaoyan.entities.Comment
 import usst.dysrc.kaoyan.entities.PostDetail
 import usst.dysrc.kaoyan.utils.OKHTTPUtils
 import usst.dysrc.kaoyan.utils.ServerUtil
+import java.text.SimpleDateFormat
 import java.util.*
 
 class PostDetailActivity: AppCompatActivity(){
@@ -94,7 +95,8 @@ class PostDetailActivity: AppCompatActivity(){
             uiThread {
                 detailPost_userName_textView.text=postDetail.post!!.userName
                 detailPost_title_textView.text=postDetail.post!!.title
-                detailPost_createDate_textView.text=postDetail.post!!.createDate.toString()
+//                detailPost_createDate_textView.text=postDetail.post!!.createDate.toString()
+                detailPost_createDate_textView.text=SimpleDateFormat("yyyy-MM-dd").format(postDetail.post!!.createDate)
                 detailPost_content_textView.text=postDetail.post!!.content
                 detailPost_admireNum_textView.text= postDetail.post!!.admireNum.toString()
                 detailPost_commentList_recyclerView.layoutManager=LinearLayoutManager(it)
