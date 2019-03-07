@@ -10,6 +10,7 @@ object ServerUtil{
     const val SERVER_POST_SEARCH_POST_DETAIL:String="/post/searchPostDetail"
     const val SERVER_POST_ADMIRE_URL:String="/post/admire"
     const val SERVER_POST_DELETE_POST_URL="/post/deletePost"
-    const val SERVER_PSOT_INCREASE_COMMENT_URL="/post/increaseComment"
-    const val SERVER_PSOT_COLLECT_POST_URL="/post/collectPost"
+    const val SERVER_POST_INCREASE_COMMENT_URL="/post/increaseComment"
+    const val SERVER_POST_COLLECT_POST_URL="/post/collectPost"
+    const val SERVER_POST_SEARCH_COLLECTIONS_URL="/post/searchCollectionList"
 }
